@@ -5,21 +5,16 @@ def draw_and_remove_elements(array, seed=None):
     if seed is not None:
         random.seed(seed)
 
-    # List to store the removed elements as rows
+    # List to store the removed elements
     removed_elements_list = []
 
     while array:
-        removed_elements = {'A': None, 'B': None, 'D': None, 'E': None}
-        columns = ['A', 'B', 'D', 'E']
-
-        for i, column in enumerate(columns):
-            if array:
-                index = random.randint(0, len(array) - 1)
-                element = array.pop(index)
-                removed_elements[column] = element
-                print(f"Drawn element for column {column}: {element}")
-
-        removed_elements_list.append(removed_elements)
+        # Draw a random element from the array
+        index = random.randint(0, len(array) - 1)
+        element = array.pop(index)
+        removed_elements_list.append(element)
+        print(f"Drawn element: {element}")
+        print(f"Remaining array: {array}")
 
     # Creating a DataFrame to display the result
     df = pd.DataFrame(removed_elements_list)
